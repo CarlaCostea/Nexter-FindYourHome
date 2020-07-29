@@ -1,0 +1,49 @@
+.features {
+    grid-column: center-start / center-end;
+    margin: 15rem 0;
+
+    @supports(display: grid) {
+        display: grid;
+        //grid-template-columns: repeat(3, 1fr);
+        //make this responsive, this will add as many tracks fit in the container
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        grid-gap: 6rem;
+         //align text inside
+         align-items: start;
+        }
+}
+
+//this feature can be a reusable component
+.feature {
+
+    //support
+    //float is ignored
+    float: left;
+    width: 33.3333%;
+    margin-bottom: 6rem;
+
+    @supports(display: grid) {
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    //we want the rows to occupy the available space so we do not define them 
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
+    &__icon {
+        fill: $color-primary;
+        width: 4.5rem;
+        height: 4.5rem;
+        // if we do not explicit define the end of the grid we can't use -1: grid-row: 1 / -1;
+        grid-row: 1 / span 2;
+        //center the icon 
+        transform: translateY(-1rem);
+    }
+
+    &__text {
+        font-size: 1.7rem;
+    }
+}
